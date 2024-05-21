@@ -52,14 +52,14 @@ function App() {
             onChange={onChangeBody}
           />
 
-          <Button>+ 추가하기</Button>
+          <Button onClick={onAddTodo}>+ 추가하기</Button>
         </InputContainer>
         <TodoListContainer>
           {todos.map((todo) => (
             <TodoCard key={todo.id}>
               <span>제목: {todo.title}</span>
               <span>할 일: {todo.body}</span>
-              <Button>삭제하기</Button>
+              <Button onClick={() => onDeleteTodo(todo.id)}>삭제하기</Button>
             </TodoCard>
           ))}
         </TodoListContainer>
