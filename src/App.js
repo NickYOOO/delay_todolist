@@ -20,16 +20,14 @@ function App() {
   const [body, setBody] = useState('');
 
   useEffect(() => {
-    if (todos.length > 0) {
-      console.log('Todo 추가:');
-    }
+    console.log('현재:', todos);
   }, [todos]);
 
   const onAddTodo = () => {
     const newId = nextId();
+    console.log('추가 버튼 클릭:', { id: newId, title, body });
     dispatch(__addToDo({ id: newId, title, body }));
     resetInputs();
-    console.log('추가 버튼');
   };
 
   const onDeleteTodo = (id) => {
