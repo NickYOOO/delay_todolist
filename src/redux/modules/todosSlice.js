@@ -5,6 +5,8 @@ export const __addToDo = createAsyncThunk(
   '__addToDo',
   async (payload, thunkAPI) => {
     await waitTwoSeconds();
+    console.log(payload);
+    console.log('A');
     return payload;
   }
 );
@@ -29,7 +31,7 @@ const todosSlice = createSlice({
       state.list.push(action.payload);
     },
     deleteTodo: (state, action) => {
-      state.list.filter((todo) => todo.id !== action.payload.id);
+      state.list = state.list.filter((todo) => todo.id !== action.payload.id);
     },
   },
 });

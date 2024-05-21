@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Button,
   InputContainer,
@@ -19,9 +19,17 @@ function App() {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
+  useEffect(() => {
+    if (todos.length > 0) {
+      console.log('Todo 추가:');
+    }
+  }, [todos]);
+
   const onAddTodo = () => {
-    dispatch(__addToDo({ id, title, body }));
+    const newId = nextId();
+    dispatch(__addToDo({ id: newId, title, body }));
     resetInputs();
+    console.log('추가 버튼');
   };
 
   const onDeleteTodo = (id) => {
@@ -34,6 +42,7 @@ function App() {
   };
   const onChangeTitle = (e) => setTitle(e.target.value);
   const onChangeBody = (e) => setBody(e.target.value);
+
   return (
     <PageWrapper>
       <TodoContainer>
