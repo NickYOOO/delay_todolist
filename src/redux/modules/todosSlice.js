@@ -29,7 +29,7 @@ const todosSlice = createSlice({
       state.list.push(action.payload);
     },
     deleteTodo: (state, action) => {
-      state.list.filter(todo => todo.id ! == action.payload.id);
+      state.list.filter((todo) => todo.id !== action.payload.id);
     },
   },
 });
