@@ -35,13 +35,14 @@ const todosSlice = createSlice({
       state.list = state.list.filter((todo) => todo.id !== action.payload.id);
     },
   },
+
+  // ************* 오류 부분
   extraReducers: (builder) => {
     builder.addCase(__addToDo.fulfilled, (state, action) => {
-      console.log('비동기 추가 완료:', action.payload); // 비동기 추가 완료 로그
+      console.log('비동기 추가 완료:', action.payload);
       state.list.push(action.payload);
     });
     builder.addCase(__deleteTodo.fulfilled, (state, action) => {
-      console.log('비동기 삭제 완료:', action.payload); // 비동기 삭제 완료 로그
       state.list = state.list.filter((todo) => todo.id !== action.payload.id);
     });
   },
